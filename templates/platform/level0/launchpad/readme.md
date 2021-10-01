@@ -52,6 +52,20 @@ cd /tf/caf/landingzones
 git fetch origin
 git checkout {{ config.gitops.caf_landingzone_branch }}
 
+# Plan first to preview the changes that will be applied to the infrastructure
+rover \
+  -lz /tf/caf/landingzones/caf_launchpad \
+  -var-folder {{ config.configuration_folders.platform.destination_base_path }}/{{ config.configuration_folders.platform.destination_relative_path }}/{{ level }}/{{ base_folder }} \
+  -tfstate_subscription_id {{ config.platform_core_setup.enterprise_scale.primary_subscription_details.subscription_id }} \
+  -target_subscription {{ config.platform_core_setup.enterprise_scale.primary_subscription_details.subscription_id }} \
+  -tfstate {{ tfstates.launchpad.tfstate }} \
+  -log-severity {{ config.gitops.rover_log_error }} \
+  -launchpad \
+  -env {{ config.caf_terraform.launchpad.caf_environment }} \
+  -level {{ level }} \
+  -a plan
+
+# Apply the changes to the infrastructure
 rover \
   -lz /tf/caf/landingzones/caf_launchpad \
   -var-folder {{ config.configuration_folders.platform.destination_base_path }}/{{ config.configuration_folders.platform.destination_relative_path }}/{{ level }}/{{ base_folder }} \

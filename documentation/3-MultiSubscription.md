@@ -50,7 +50,7 @@ az account set --subscription <subscription_GUID>
 
 You can find all the infrastructure configuration values for the platform in [the following folder](/orgs/contoso/multi-sub/platform). You will first need to replace some of the configuration with your own values. Navigate to the [demo.caf.platform.yaml](/orgs/contoso/multi-sub/platform/demo.caf.platform.yaml) file. 
 
-For instance, replace the following block in the yaml file with your own details:
+Replace the following block in the yaml file with your own details:
 ```yaml
 primary_subscription_details:
       subscription_id: set_subscription_guid
@@ -74,10 +74,10 @@ rover ignite \
 
 ```
 
+Running the above `rover ignite` command uses the values in your configuration yaml files to generate the CAF IaC for the platform landing zones, by populating the templates with your specified configuration values. You can find the platform templates at [templates/platform](/templates/platform).
+
 TO CHECK:
 - Is there documentation for rover ignite command?
-
-Running the above `rover ignite` command uses the values in your configuration yaml files to generate the CAF IaC for the platform landing zones, by populating the templates with your specified configuration values. You can find the platform templates at [starter/templates/platform](/starter/templates/platform).
 
 **Why separate out the configuration values?**
 - Reason 1
@@ -89,11 +89,13 @@ Once the command has run, your generated platform configuration files will be fo
 
 Should you need to make modifications to the platform configurations in future, you can ... and then re-run the `rover ignite` command to regenerate the CAF config files. 
 
-## Next Step
-Once you have deployed all the platform components, head over to [this doc](../asvm/README.md) to learn how to deploy the ASVM levels (3 and 4). 
 
+##  Generate and Deploy the Azure Subscription Vending Machine Layer (Level 3)
+Once you have deployed all the platform level components, we will now deploy the ASVM level 3. 
 
-### Generating the Azure Subscription Vending Machine (ASVM) configurations
+If you open the [ASVM configs folder](/configuration/contoso/demo/multi-sub/asvm), you will notice that there have been 3 example projects created. Each of these folders represent a "landing zone", or a subscription and set of base resources (like virtual networks, keyvaults, etc.) for an individual team or project. Each folder contains its own set of resource and subscription configuration files, and `rover ignite` will generate the IaC for each of these projects to be deployed. 
+
+Run the following to generate the CAF configurations for the ASVM layer:
 
 ```bash
 cd /tf/caf/starter/templates/asvm
@@ -107,3 +109,11 @@ rover ignite \
   -e boostrap_launchpad=false \
   -e deploy_subscriptions=false
 ```
+
+Once the command has run, your generated ASVM CAF configs will be found [here](/configuration/contoso/demo/multi-sub/asvm). You can execute the [steps in the project 1 folder](/configuration/contoso/demo/multi-sub/asvm/project1/subscription/readme.md) as the starting point to begin deploying the subscription.
+
+
+## Creating a new Landing Zone with the ASVM
+
+Now that you have deployed the example project landing zones, let's [generate and deploy a new landing zone](./3.1-CreateASVMLandingZone.md) with the ASVM. 
+

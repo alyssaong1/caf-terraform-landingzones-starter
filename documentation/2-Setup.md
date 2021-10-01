@@ -62,10 +62,6 @@ Now we will need to get the landing zones logic in the same workspace, so let's 
 ```bash
 cd /tf/caf
 git clone --branch 2108.0 https://github.com/Azure/caf-terraform-landingzones.git /tf/caf/landingzones
-# Or refresh an existing clone
-cd /tf/caf/landingzones
-git checkout 2108.0
-git pull # This command does not work - says you are not currently on a branch
 ```
 
 **In future, the above steps may be automated using rover init or a setup command to pull the required repos.**
