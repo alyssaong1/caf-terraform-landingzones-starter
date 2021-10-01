@@ -50,13 +50,15 @@ az account set --subscription <subscription_GUID>
 
 You can find all the infrastructure configuration values for the platform in [the following folder](/orgs/contoso/multi-sub/platform). You will first need to replace some of the configuration with your own values. Navigate to the [demo.caf.platform.yaml](/orgs/contoso/multi-sub/platform/demo.caf.platform.yaml) file. 
 
-Replace the following block in the yaml file with your own details:
+Replace the following block in the yaml file with your own tenant and subscription details:
 ```yaml
 primary_subscription_details:
       subscription_id: set_subscription_guid
       subscription_name: set_subscription_name
       tenant_id: set_tenant_id
 ```
+
+TODO: modify caf_platform_maintainers as well
 
 Then, run the following commands to generate the CAF configurations for the platform landing zones:
 
@@ -76,8 +78,7 @@ rover ignite \
 
 Running the above `rover ignite` command uses the values in your configuration yaml files to generate the CAF IaC for the platform landing zones, by populating the templates with your specified configuration values. You can find the platform templates at [templates/platform](/templates/platform).
 
-TO CHECK:
-- Is there documentation for rover ignite command?
+TO DO: Is there documentation for rover ignite command which we can link?
 
 **Why separate out the configuration values?**
 - Reason 1
@@ -87,7 +88,7 @@ Once the command has run, your generated platform configuration files will be fo
 
 ### Updating the platform configurations
 
-Should you need to make modifications to the platform configurations in future, you can ... and then re-run the `rover ignite` command to regenerate the CAF config files. 
+Note that each time you make modifications to the platform configurations or templates, you will need to re-run the `rover ignite` command to regenerate the CAF config files with the latest values.
 
 
 ##  Generate and Deploy the Azure Subscription Vending Machine Layer (Level 3)
@@ -101,10 +102,10 @@ Run the following to generate the CAF configurations for the ASVM layer:
 cd /tf/caf/starter/templates/asvm
 
 rover ignite \
-  --playbook /tf/caf/starter/templates/platform/ansible.yaml \
+  --playbook /tf/caf/starter/templates/asvm/ansible.yaml \
   -e base_templates_folder=/tf/caf/starter/templates \
-  -e config_folder=/tf/caf/orgs/contoso/multi-sub/platform \
-  -e config_folder_asvm=/tf/caf/orgs/contoso/multi-sub/asvm \
+  -e config_folder=/tf/caf/orgs/contoso/multi-sub/asvm \
+  -e platform_config_folder=/tf/caf/orgs/contoso/multi-sub/platform \
   -e scenario=demo \
   -e boostrap_launchpad=false \
   -e deploy_subscriptions=false
