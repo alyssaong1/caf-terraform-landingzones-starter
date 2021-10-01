@@ -36,7 +36,7 @@ To open the repository you've just cloned in Visual Studio Code, click on the si
 
 ![OpenPalette](./img/open-palette-button.jpg)
 
-![RemoteDevelopment](./img/open-folder-container.png)
+![RemoteDevelopment](./img/open-folder-container.PNG)
 
 
 This should take a while, in the meantime, feel free to click on Details to see the container being downloaded from the registry and being connected to your local environment:

@@ -1,6 +1,6 @@
 # Enterprise-Scale Landing Zones using Cloud Adoption Framework with Terraform
 
-Imagine that you are a platform team looking to adopt Azure for your organization, and you would like a set of prescriptive guidance and templates to set up your organization's infrastructure so that it is on a path to sustainable scale from day 1. The purpose of this repository is to provide you with a starting point when composing your Cloud Adoption Framework for Azure landing zones on Terraform. It provides sample files, folder structure, and advice on how to get started creating an Infrastructure as Code DevOps environment.
+Imagine that you are a platform team looking to adopt Azure for your organization, and you would like a set of prescriptive guidance and templates to set up your organization's infrastructure so that it is on a path to sustainable scale from day 1. The purpose of this repository is to provide you with a starting point when composing your Azure landing zones with Cloud Adoption Framework for Terraform. It provides sample files, folder structure, and advice on how to get started creating an Infrastructure as Code DevOps environment.
 
 In this guide, you will setup and deploy your first enterprise-scale landing zones. 
 
@@ -29,17 +29,17 @@ TO CHECK:
 
 ### Prerequisites and Setup
 
-Please go through [this guide](./Setup.md) for detailed instructions on how to setup your dev environment. 
+Please go through [this guide](./2-Setup.md) for detailed instructions on how to setup your dev environment. 
 
 Once you have completed the setup, select the option most suited to your scenario to deploy your landing zones:
 
 ### Option 1: Multi Subscription Mode
 You are part of a platform or SRE team looking to automate and scale out the creation of Azure subscriptions and resources for your internal teams. Note that you will need Account Owner role on the Enterprise Agreement enrollment to run the multi subscription setup.
 
-Go to [orgs/contoso/multi-sub/platform](/orgs/contoso/multi-sub/platform/README.md)
+Go to [Multi-Subscription Mode Setup](./3-MultiSubscription.md)
 
 ### Option 2: Standalone Subscription Mode
 You don't have an EA and you just want to try out deploying landing zones on a single subscription that you own.
 
-Go to [orgs/contoso/standalone/platform](orgs/contoso/standalone/readme.md)
+Go to [Standalone Subscription Mode Setup](./4-SingleSubscription.md)
 
