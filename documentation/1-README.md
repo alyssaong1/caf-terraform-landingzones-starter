@@ -8,7 +8,7 @@ In this guide, you will setup and deploy your first enterprise-scale landing zon
 
 Before starting, we recommend that you first read through the following to get a foundational understanding of the Cloud Adoption Framework and the Enterprise-Scale Landing Zones:
 
-- [Introduction to core CAF concepts and terminology]() 
+- [Introduction to core CAF concepts and terminology]() - TODO: Add link to content by swetha here
 - [Overview of Enterprise-Scale](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/) - design principals and architecture of the enterprise scale landing zones. 
 
 ### Repositories used
