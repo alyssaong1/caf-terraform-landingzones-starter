@@ -15,15 +15,13 @@ Before starting, we recommend that you first read through the following to get a
 
 Landing zones for Terraform are composed of multiple open-source components and projects. We will mainly be using 2 repositories when setting up the landing zones. Our approach is to separate the configuration repository and the logic repository:
 
-* **Configuration repository (you are here!)**: this template is an example of configuration repository for CAF landing zones, containing definition of the configuration for your different environments. In real world, this is often separate repositories, but to simplify things, we created a repo with examples containing various environments.
-* **Logic repository**: the [Azure CAF landing zone repository](https://github.com/azure/caf-terraform-landingzones)
+* **Configuration repository (you are here!)**: this template is an example of configuration repository for CAF landing zones, containing definition of the configuration for your different environments. In real world, this is often separate repositories, but to simplify things, we created a repo with some basic examples.
+* **Logic repository**: the [Azure CAF landing zone repository](https://github.com/azure/caf-terraform-landingzones) - think of this as the glue between the CAF configuration variables and Terraform modules. 
 
 There are other open source repositories for core Terraform module logic and tooling like Rover as well, but in this starter, you will only need the above 2. 
 
-TO CHECK:
-- Landingzones-starter would change its name eventually.
-- Need something better to describe caf-terraform-landingzones
-
+TODO:
+- Need a better description of caf-terraform-landingzones
 
 ## Deploying your Landing Zones
 

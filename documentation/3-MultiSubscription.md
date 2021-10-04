@@ -10,7 +10,7 @@ TODO: Find the page that describes what is deployed from L0-4
 
 We will first deploy the shared platform components from level 0 to 2. Once the platform has been deployed, the next scenario is where you will provision the Azure Subscriptions/Landing Zones for the individual teams and/or projects in the organization in level 3. We call this the Azure Vending Machine layer, as it is a process that takes in the configuration values for the project/team and generates the infrastructure as code to be deployed. 
 
-In most cases, the organization's platform team would manage levels 0-3. Individual teams would make their own resource customizations and additions on level 4, based on their project requirements. 
+In most cases, the organization's platform team would manage levels 0-3. Individual teams would make their own resource customizations and additions on level 4, based on their project or application requirements. 
 
 ## Creating your first Azure Subscription manually
 
@@ -48,9 +48,9 @@ az account set --subscription <subscription_GUID>
 
 ## Generate and Deploy the Platform Layers (Level 0-2)
 
-You can find all the infrastructure configuration values for the platform in [the following folder](/orgs/contoso/multi-sub/platform). You will first need to replace some of the configuration with your own values. Navigate to the [demo.caf.platform.yaml](/orgs/contoso/multi-sub/platform/demo.caf.platform.yaml) file. 
+You can find all the infrastructure configuration values for the platform in [the following folder](/orgs/contoso/multi-sub/platform). You will first need to customize some of the configuration for your own environment. 
 
-Replace the following block in the yaml file with your own tenant and subscription details:
+Navigate to the [demo.caf.platform.yaml](/orgs/contoso/multi-sub/platform/demo.caf.platform.yaml) file and replace the following block in the yaml file with your own tenant and subscription details:
 ```yaml
 primary_subscription_details:
       subscription_id: set_subscription_guid
@@ -58,9 +58,19 @@ primary_subscription_details:
       tenant_id: set_tenant_id
 ```
 
-TODO: modify caf_platform_maintainers as well
+You will also need to replace the values in the following block with your own tenant name and under `caf_platform_maintainers`, the emails of the users who you wish to grant permissions to manage the platform infrastructure layer. 
+```yaml
+platform_identity:
+  # Set the Azure Active Directory tenant name. Do not include the .onmicrosoft.com
+  tenant_name: change_tenant_name
+  azuread_identity_mode: service_principal
+  caf_platform_maintainers:
+    - change_email@demo.com
+```
 
-Then, run the following commands to generate the CAF configurations for the platform landing zones:
+Look through the yaml file for other parameters you need to replace. 
+
+Once you are done, run the following commands to generate the CAF configurations for the platform landing zones:
 
 ```bash
 cd /tf/caf/starter/templates/platform
@@ -73,12 +83,11 @@ rover ignite \
   -e scenario=demo \
   -e boostrap_launchpad=false \
   -e deploy_subscriptions=false
-
 ```
 
 Running the above `rover ignite` command uses the values in your configuration yaml files to generate the CAF IaC for the platform landing zones, by populating the templates with your specified configuration values. You can find the platform templates at [templates/platform](/templates/platform).
 
-TO DO: Is there documentation for rover ignite command which we can link?
+TODO: Is there documentation for rover ignite command which we can link?
 
 **Why separate out the configuration values?**
 - Reason 1
