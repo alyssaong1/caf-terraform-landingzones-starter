@@ -64,8 +64,5 @@ cd /tf/caf
 git clone --branch 2108.0 https://github.com/Azure/caf-terraform-landingzones.git /tf/caf/landingzones
 ```
 
-**In future, the above steps may be automated using rover init or a setup command to pull the required repos.**
-
-
 Now you can head back over to the [main README](./1-README.md) to proceed with the next steps. 
 
